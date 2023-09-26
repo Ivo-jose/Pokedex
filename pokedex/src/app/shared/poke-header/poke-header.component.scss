@@ -1,0 +1,17 @@
+/*
+  Importing styling variables, resetting pre-defined styling and
+  function that converts measurement units (Px to Rem).
+*/
+@import '../../../config-scss/variables.scss';
+@import '../../../config-scss/reset.scss';
+@import '../../../config-scss/rem-calc.scss';
+
+
+:host {
+  header {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: rem-calc(40) 0;
+  }
+}
