@@ -14,7 +14,9 @@ export class DetailsComponent implements OnInit {
   private urlPokemon: string = 'https://pokeapi.co/api/v2/pokemon';
   private urlName: string = 'https://pokeapi.co/api/v2/pokemon-species';
 
-  public pokemon: any
+  public pokemon: any;
+  public isLoading: boolean = false;
+  public apiError: boolean = false;
 
   constructor(
     private activedRouter: ActivatedRoute,
@@ -32,9 +34,13 @@ export class DetailsComponent implements OnInit {
     return forkJoin([pokemon,name]).subscribe({
       next: res => {
         this.pokemon = res
+        this.isLoading = true;
         //console.log(res)
       },
-      error: err => console.log(err)
+      error: err => {
+        this.apiError = true;
+        console.log(err);
+      }
     });
   }
 }
